@@ -16,19 +16,19 @@ void main() {
 
   setUp(() {
     a = const A(myId);
-    b = B([a]);
+    b = B(a);
   });
 
   test('problem 1', () {
-    expect(b.myListofBase.first, equals({'id': myId}));
-  });
-
-  test('problem 2', () {
     const anotherId = 'another-id';
 
     // I'd like the following to compile and just... work!
     b.myListofBase.forEach((element) {
       print(element.copyWith(id: anotherId));
     });
+  });
+
+  test('problem 2', () {
+    expect(b.myValue, equals({'id': myId}));
   });
 }

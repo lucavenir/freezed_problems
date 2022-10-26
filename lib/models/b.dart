@@ -8,8 +8,7 @@ part 'b.g.dart';
 @freezed
 class B with _$B {
   const factory B(
-    // @BaseConverter() this isn't enough...
-    List<Base> myListofBase,
+    @BaseConverter() Base myValue,
   ) = _B;
 
   factory B.fromJson(Map<String, dynamic> json) => _$BFromJson(json);
