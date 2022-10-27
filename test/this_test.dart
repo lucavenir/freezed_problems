@@ -22,13 +22,11 @@ void main() {
   test('problem 1', () {
     const anotherId = 'another-id';
 
-    // I'd like the following to compile and just... work!
-    b.myListofBase.forEach((element) {
-      print(element.copyWith(id: anotherId));
-    });
+    // This is _still_ an open problem!
+    print(b.myValue.copyWith(id: anotherId));
   });
 
   test('problem 2', () {
-    expect(b.myValue, equals({'id': myId}));
+    expect(b.myValue.toJson(), {'id': 'my-id'});
   });
 }
