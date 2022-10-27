@@ -13,6 +13,12 @@ void main() {
   late A a;
   late B b;
   const myId = "my-id";
+  const myJson = {
+    'myValue': {'key': 'a', 'id': myId}
+  };
+  const myBJsonResult = {
+    'myValue': {'id': myId}
+  };
 
   setUp(() {
     a = const A(myId);
@@ -22,13 +28,23 @@ void main() {
   test('problem 1', () {
     const anotherId = 'another-id';
 
+    print(a.key);
+
     // This is _still_ an open problem!
     // print(b.myValue.copyWith(id: anotherId));
   });
 
-  test('problem 2', () {
-    expect(b.toJson(), {
-      'myValue': {'id': 'my-id'}
-    });
+  test('problem 2.1', () {
+    // This passes. It is weird and maybe unneeded, but still.
+    expect(b.toJson(), equals(myBJsonResult));
+  });
+
+  test('problem 2.2', () {
+    // This fails! Which is weird! (serialization and deserialization alter the values)
+    expect(b.toJson(), equals(myJson));
+  });
+
+  test('problem 3', () {
+    final b = B.fromJson(myJson);
   });
 }
