@@ -23,10 +23,12 @@ void main() {
     const anotherId = 'another-id';
 
     // This is _still_ an open problem!
-    print(b.myValue.copyWith(id: anotherId));
+    // print(b.myValue.copyWith(id: anotherId));
   });
 
   test('problem 2', () {
-    expect(b.myValue.toJson(), {'id': 'my-id'});
+    expect(b.toJson(), {
+      'myValue': {'id': 'my-id'}
+    });
   });
 }
