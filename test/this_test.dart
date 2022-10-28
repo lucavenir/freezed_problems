@@ -6,8 +6,10 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:freezed_problems/main.mapper.g.dart';
 import 'package:freezed_problems/models/a.dart';
 import 'package:freezed_problems/models/b.dart';
+import 'package:freezed_problems/models/base.dart';
 
 void main() {
   late A a;
@@ -28,7 +30,11 @@ void main() {
   test('problem 1', () {
     const anotherId = 'another-id';
 
-    print(a.id);
+    final a = Mapper.fromMap<Base>({'id': 'id', 'type': 'a'});
+    final b = a.id;
+
+    print(a.runtimeType);
+    print(a);
 
     // This is _still_ an open problem!
     // print(b.myValue.copyWith(id: anotherId));
@@ -45,6 +51,6 @@ void main() {
   });
 
   test('problem 3', () {
-    final b = B.fromJson(myJson);
+    final b = Mapper.fromMap<B>(myJson);
   });
 }

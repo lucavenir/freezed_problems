@@ -2,5 +2,8 @@ targets:
   $default:
     builders:
       dart_mappable_builder:
+        options:
+          discriminatorKey: 'type'
+          caseStyle: 'camelCase'
         generate_for:
           - lib/main.dart
