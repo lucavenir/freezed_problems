@@ -9,7 +9,8 @@ environment:
   sdk: '>=2.18.2 <3.0.0'
 
 dependencies:
-  dart_mappable: ^1.2.0
+  dart_mappable: ^2.0.0-dev.5
+
   flutter:
     sdk: flutter
 
@@ -20,7 +21,7 @@ dev_dependencies:
 
   flutter_lints: ^2.0.0
   build_runner: ^2.3.2
-  dart_mappable_builder: ^1.2.0
+  dart_mappable_builder: ^2.0.0-dev.5
   
 
 

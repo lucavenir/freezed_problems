@@ -1,9 +1,10 @@
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:freezed_problems/main.mapper.g.dart';
-import 'package:freezed_problems/models/a.dart';
+
+import 'my_base.dart';
 
 @MappableClass()
-class B with Mappable {
+class B with BMappable {
   const B(this.value);
-  final A value;
+  final MyBase value;
 }

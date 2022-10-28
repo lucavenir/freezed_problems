@@ -9,48 +9,37 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:freezed_problems/main.mapper.g.dart';
 import 'package:freezed_problems/models/a.dart';
 import 'package:freezed_problems/models/b.dart';
-import 'package:freezed_problems/models/base.dart';
+import 'package:freezed_problems/models/my_base.dart';
 
 void main() {
   late A a;
   late B b;
-  const myId = "my-id";
-  const myJson = {
-    'value': {'key': 'a', 'id': myId}
-  };
-  const myBJsonResult = {
-    'myValue': {'id': myId}
+  const id = "my-id";
+  const aType = 'A';
+  const aJson = {'type': aType, 'id': id};
+  const bJson = {
+    'value': {'id': id, 'type': aType}
   };
 
   setUp(() {
-    a = const A(myId);
+    a = const A(id);
     b = B(a);
   });
 
   test('problem 1', () {
-    const anotherId = 'another-id';
-
-    final a = Mapper.fromMap<Base>({'id': 'id', 'type': 'a'});
-    final b = a.id;
-
-    print(a.runtimeType);
-    print(a);
-
-    // This is _still_ an open problem!
-    // print(b.myValue.copyWith(id: anotherId));
+    final a = Mapper.fromMap<MyBase>(aJson);
+    final c = b.value.copyWith();
   });
 
   test('problem 2.1', () {
-    // This passes. It is weird and maybe unneeded, but still.
-    expect(b.toJson(), equals(myBJsonResult));
+    expect(b.toMap(), equals(bJson));
   });
 
   test('problem 2.2', () {
-    // This fails! Which is weird! (serialization and deserialization alter the values)
-    expect(b.toJson(), equals(myJson));
+    expect(b.value.toMap(), equals(aJson));
   });
 
   test('problem 3', () {
-    final b = Mapper.fromMap<B>(myJson);
+    final b = Mapper.fromMap<B>(bJson);
   });
 }

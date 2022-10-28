@@ -6,7 +6,7 @@ import 'models/b.dart';
 void main() {
   const a = A('hello');
   const b = B(a);
-  print(b);
+  print(b.value.copyWith(id: "lol"));
 
   runApp(const MyApp());
 }
