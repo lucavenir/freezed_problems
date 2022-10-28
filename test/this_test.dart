@@ -14,7 +14,7 @@ void main() {
   late B b;
   const myId = "my-id";
   const myJson = {
-    'myValue': {'key': 'a', 'id': myId}
+    'value': {'key': 'a', 'id': myId}
   };
   const myBJsonResult = {
     'myValue': {'id': myId}
@@ -28,7 +28,7 @@ void main() {
   test('problem 1', () {
     const anotherId = 'another-id';
 
-    print(a.key);
+    print(a.id);
 
     // This is _still_ an open problem!
     // print(b.myValue.copyWith(id: anotherId));

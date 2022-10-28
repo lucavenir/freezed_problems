@@ -1,20 +1,10 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
 import 'base.dart';
 
-part 'a.freezed.dart';
-part 'a.g.dart';
-
-@Freezed(toJson: true)
-class A with _$A, Base {
-  const A._();
-  const factory A(String id) = _A;
-
-  factory A.fromJson(Map<String, dynamic> json) => _$AFromJson(json);
-
+@MappableClass()
+class A extends Base with AMixin {
+  const A(this.id);
   @override
-  String get key => runtimeType.toString();
-
-  @override
-  Map<String, dynamic> toJson() => _$$_AToJson(_$_A(id));
+  final String id;
 }
