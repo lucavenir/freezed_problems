@@ -1,11 +1,14 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 
 import 'models/a.dart';
+import 'models/asd.dart';
 import 'models/b.dart';
 
 void main() {
-  const a = A('hello');
-  const b = B(a);
+  const c = X('hello');
+  const b = B(c);
   print(b.value.copyWith(id: "lol"));
 
   runApp(const MyApp());
